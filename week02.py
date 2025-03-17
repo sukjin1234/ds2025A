@@ -1,7 +1,3 @@
 n = int(input())
-result = 0
-i = 1
-while i<=n:
-    result += i
-    i += 1
+result = n * (n+1) // 2 # 상수 시간을 갖는다 O(1)
 print(result)
