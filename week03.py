@@ -1,5 +1,4 @@
-import array
-# 같은 주소에 저장됨
-arr = array.array("f",[99,0,-7,0,16])
-for i in range(len(arr)):
-    print(f"{arr[i]:3},{id(arr[i])}")
+groups = ["HOT","Seventeen","Black Pink","NJZ"]
+ratings = [1,2,4,3]
+group_rating = zip(groups,ratings)
+print(list(group_rating))
