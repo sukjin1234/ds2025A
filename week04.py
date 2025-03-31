@@ -16,6 +16,18 @@ class LinkedList:
         while current.link:
             current = current.link
         current.link = Node(data)
+
+    def search(self,target):
+        current = self.head
+        while current.link:
+            if target == current.data:
+                return f"{target}을(를) 찾았습니다."
+            else:
+                current = current.link
+        return f"{target}을(를) 찾지 못했습니다."
+
+
+
     def __str__(self):
         result = ""
         current = self.head
@@ -31,3 +43,5 @@ ll.append(8)
 ll.append(10)
 ll.append(-10)
 print(ll)
+print(ll.search(9))
+print(ll.search(10))
