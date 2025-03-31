@@ -20,7 +20,8 @@ class LinkedList:
         result = ""
         current = self.head
         while current is not None:
-            result += str(current.data) + " -> "
+            #result += str(current.data) + " -> "
+            result += f"{current.data} -> "
             current = current.link
         return result + "end"
         #return "Linked list"
