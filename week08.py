@@ -1,9 +1,3 @@
-class TreeNode:
-	def __init__(self):
-		self.left = None
-		self.data = None
-		self.right = None
-
 def pre_order(node):
     if node is None:
         return
@@ -26,31 +20,35 @@ def in_order(node):
     print(node.data, end="-> ")
     in_order(node.right)
 
+class TreeNode:
+	def __init__(self):
+		self.left = None
+		self.data = None
+		self.right = None
 
-node1 = TreeNode()
-node1.data = 'hs'
+if __name__ == "__main__":
+    numbers = [10,15,8,3,9]
+    root = None
 
-node2 = TreeNode()
-node2.data = 'sl'
-node1.left = node2
+    node = TreeNode()
+    node.data = numbers[0] # 10
+    root = node
 
-node3 = TreeNode()
-node3.data = 'mb'
-node1.right = node3
+    for number in numbers[1:]:
+        node = TreeNode()
+        node.data = number
 
-node4 = TreeNode()
-node4.data = 'hw'
-node2.left = node4
+        current = root
+        while True:
+            if number < current.data:
+                if current.left is None:
+                    current.left = node
+                    break
+                current = current.left # 이동
+            else:
+                if current.right is None:
+                    current.right = node
+                    break
+                current = current.right # 이동
 
-node5 = TreeNode()
-node5.data = 'zz'
-node2.right = node5
-
-node6 = TreeNode()
-node6.data = 'sm'
-node3.left = node6
-
-# print(node6.data)
-# print(node1.right.left.data)
-
-in_order(node1)
+    pre_order(root)
