@@ -61,6 +61,21 @@ def insert(root, value):
             current = current.right # 이동
     return root
 
+def delete(node, value):
+    if node is None: # node가 비어있으면 None 처리
+        return None
+
+    if value < node.data: # value가 root data보다 작은 경우
+        node.left = delete(node.left, value) # root.left로 재귀함수
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else: # 삭제할 값을 찾음
+        # leaf 노드거나 자식이 1개인 경우 노드를 삭제
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+    return node
 if __name__ == "__main__":
     numbers = [10,15,8,3,9,100,7,13]
     root = None
@@ -68,10 +83,24 @@ if __name__ == "__main__":
     for number in numbers:
         root = insert(root,number)
 
-    in_order(root)
+    in_order(root) # LPR
+    print()
+    post_order(root) # LRP
+    print()
+    pre_order(root) # PLR
     print()
     find_number = int(input("찾는 수는 ? : "))
     if search(find_number):
         print(f"{find_number}를 찾았습니다.")
     else:
         print(f"{find_number}를 찾지 못했습니다.")
+
+    delete_number = int(input("삭제할 수는 ? : "))
+    root = delete(root, delete_number)
+
+    in_order(root)  # LPR
+    print()
+    post_order(root)  # LRP
+    print()
+    pre_order(root)  # PLR
+    print()
