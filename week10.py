@@ -26,23 +26,18 @@ class TreeNode:
 		self.data = None
 		self.right = None
 
-def search():
-    print()
-    find_number = int(input("찾는 수는 ? : "))
+def search(find_number):
     current = root
     while True:
         if find_number == current.data:
-            print(f"{find_number}을(를) 찾았습니다")
-            break
+            return True
         elif find_number < current.data:
             if current.left is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
+                return False
             current = current.left
         else:
             if current.right is None:
-                print(f"{find_number}이(가) 존재하지 않습니다")
-                break
+                return False
             current = current.right
 
 def insert(root, value):
@@ -74,5 +69,9 @@ if __name__ == "__main__":
         root = insert(root,number)
 
     in_order(root)
-
-    search()
+    print()
+    find_number = int(input("찾는 수는 ? : "))
+    if search(find_number):
+        print(f"{find_number}를 찾았습니다.")
+    else:
+        print(f"{find_number}를 찾지 못했습니다.")
