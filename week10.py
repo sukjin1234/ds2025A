@@ -75,6 +75,14 @@ def delete(node, value):
             return node.right
         elif node.right is None:
             return node.left
+        # 자식이 2개인 노드를 삭제
+        max_smaller_node = node.left
+        while max_smaller_node.right:
+            max_smaller_node = max_smaller_node.right # 왼쪽 서브트리로 이동 (가장 작은 값 찾기)
+        node.data = max_smaller_node.data
+        node.left= delete(node.right, max_smaller_node.data)
+
+
     return node
 if __name__ == "__main__":
     numbers = [10,15,8,3,9,100,7,13]
@@ -89,11 +97,11 @@ if __name__ == "__main__":
     print()
     pre_order(root) # PLR
     print()
-    find_number = int(input("찾는 수는 ? : "))
-    if search(find_number):
-        print(f"{find_number}를 찾았습니다.")
-    else:
-        print(f"{find_number}를 찾지 못했습니다.")
+    # find_number = int(input("찾는 수는 ? : "))
+    # if search(find_number):
+    #     print(f"{find_number}를 찾았습니다.")
+    # else:
+    #     print(f"{find_number}를 찾지 못했습니다.")
 
     delete_number = int(input("삭제할 수는 ? : "))
     root = delete(root, delete_number)
