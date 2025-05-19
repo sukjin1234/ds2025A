@@ -5,7 +5,7 @@ class Graph:
 
 
 G1 = Graph(4)
-
+G3 = Graph(4)
 # 0 == A, 1 == B, 2 == C, 3 == D
 G1.graph[0][1] = 1; G1.graph[0][2] = 1; G1.graph[0][3] = 1
 G1.graph[1][0] = 1; G1.graph[1][2] = 1
@@ -18,3 +18,13 @@ for r in range(G1.SIZE):
         print(G1.graph[r][c], end=' ')
     print()
 
+
+# 0 == A, 1 == B, 2 == C, 3 == D
+G3.graph[0][1] = 1; G3.graph[0][2] = 1
+G3.graph[3][0] = 1; G3.graph[3][2] = 1
+
+print("G3 방향 그래프")
+for r in range(G3.SIZE):
+    for c in range(G3.SIZE):
+        print(G3.graph[r][c], end=' ')
+    print()
